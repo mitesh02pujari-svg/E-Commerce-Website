@@ -9,7 +9,7 @@ interface LoginPageProps {
 }
 
 export const metadata = {
-  title: "Sign In | Thiranex Store",
+  title: "Sign In | NovaCart",
   description: "Sign in to access your account, orders, and cart.",
 };
 

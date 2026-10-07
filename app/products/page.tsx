@@ -13,7 +13,7 @@ interface ProductsPageProps {
 }
 
 export const metadata = {
-  title: "Product Catalog | Thiranex Store",
+  title: "Product Catalog | NovaCart",
   description: "Browse our complete collection of electronics, apparel, homeware, and lifestyle essentials.",
 };
 

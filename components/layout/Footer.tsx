@@ -60,11 +60,11 @@ export function Footer() {
                 <Store className="h-4 w-4" />
               </div>
               <span className="text-base font-bold text-slate-900 dark:text-white">
-                Thiranex<span className="text-indigo-600">Store</span>
+                Nova<span className="text-indigo-600">Cart</span>
               </span>
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-400 max-w-sm leading-relaxed">
-              A modern, production-grade full-stack e-commerce solution engineered for Thiranex Internship Task 3. Powered by Next.js 16, Supabase PostgreSQL, and Tailwind CSS.
+              A modern, production-grade full-stack e-commerce solution. Powered by Next.js 16, Supabase PostgreSQL, and Tailwind CSS.
             </p>
             <div className="flex items-center gap-3 text-xs text-slate-500">
               <span>Demo Platform</span>
@@ -167,7 +167,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <span className="text-[11px] text-slate-400">Thiranex Internship Task 3</span>
+                <span className="text-[11px] text-slate-400">NovaCart Platform</span>
               </li>
             </ul>
           </div>

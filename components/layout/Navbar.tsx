@@ -53,7 +53,7 @@ export function Navbar({ user, cartCount }: NavbarProps) {
           </div>
           <div className="flex flex-col">
             <span className="text-base font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-              Thiranex<span className="text-indigo-600 dark:text-indigo-400">Store</span>
+              Nova<span className="text-indigo-600 dark:text-indigo-400">Cart</span>
             </span>
             <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium tracking-wider uppercase">
               Full-Stack Platform
@@ -100,9 +100,9 @@ export function Navbar({ user, cartCount }: NavbarProps) {
             placeholder="Search products..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-1.5 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white dark:border-slate-700 dark:bg-slate-900 dark:text-white transition-all"
+            className="w-full pl-9 pr-4 py-1.5 text-xs rounded-lg border border-gray-300 bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-500 transition-all"
           />
-          <Search className="absolute left-2.5 h-4 w-4 text-slate-400 pointer-events-none" />
+          <Search className="absolute left-2.5 h-4 w-4 text-gray-400 pointer-events-none" />
         </form>
 
         {/* Actions (Cart & Auth) */}
@@ -236,9 +236,9 @@ export function Navbar({ user, cartCount }: NavbarProps) {
               placeholder="Search products..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs rounded-lg border border-slate-300 bg-slate-50 text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+              className="w-full pl-9 pr-4 py-2 text-xs rounded-lg border border-gray-300 bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-500 transition-all"
             />
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-400" />
           </form>
 
           <nav className="flex flex-col space-y-2 pt-1">

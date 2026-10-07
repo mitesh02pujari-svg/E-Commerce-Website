@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { LogIn, ShoppingBag } from "lucide-react";
 
 export const metadata = {
-  title: "Shopping Cart | Thiranex Store",
+  title: "Shopping Cart | NovaCart",
   description: "View and manage items in your shopping cart.",
 };
 

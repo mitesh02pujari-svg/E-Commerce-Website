@@ -48,7 +48,7 @@ export function SignUpForm() {
           Create an Account
         </h1>
         <p className="text-xs text-slate-500">
-          Join Thiranex Store to place orders, save addresses, and track shipments.
+          Join NovaCart to place orders, save addresses, and track shipments.
         </p>
       </div>
 

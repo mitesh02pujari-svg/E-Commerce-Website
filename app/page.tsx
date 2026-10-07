@@ -31,7 +31,7 @@ export default async function HomePage() {
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50/80 px-3.5 py-1 text-xs font-semibold text-indigo-700 dark:border-indigo-800 dark:bg-indigo-950/60 dark:text-indigo-300">
                 <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
-                <span>Thiranex Task 3 &bull; Curated Collection 2026</span>
+                <span>NovaCart &bull; Curated Collection 2026</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">

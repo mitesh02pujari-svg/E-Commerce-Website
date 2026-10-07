@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Account Profile | Thiranex Store",
+  title: "Account Profile | NovaCart",
   description: "View and manage your account details.",
 };
 

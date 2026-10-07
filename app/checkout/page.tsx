@@ -5,7 +5,7 @@ import { getCart } from "@/lib/db/cart";
 import { CheckoutForm } from "@/components/ecommerce/CheckoutForm";
 
 export const metadata = {
-  title: "Checkout | Thiranex Store",
+  title: "Checkout | NovaCart",
   description: "Secure checkout and order placement.",
 };
 

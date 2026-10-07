@@ -78,9 +78,9 @@ export default async function AdminOrdersPage({
             name="search"
             defaultValue={search || ""}
             placeholder="Search by name, email..."
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-xl border border-gray-300 bg-white text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:border-gray-500 transition-all"
           />
-          <Search className="absolute left-2.5 top-2 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-2.5 top-2 h-4 w-4 text-gray-400" />
         </form>
       </div>
 

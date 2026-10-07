@@ -22,11 +22,11 @@ export async function generateMetadata({ params }: CategoryPageProps) {
   const category = await getCategoryBySlug(slug);
 
   if (!category) {
-    return { title: "Category Not Found | Thiranex Store" };
+    return { title: "Category Not Found | NovaCart" };
   }
 
   return {
-    title: `${category.name} | Thiranex Store`,
+    title: `${category.name} | NovaCart`,
     description: category.description || `Browse our ${category.name} collection.`,
   };
 }

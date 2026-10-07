@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Package, ArrowRight, Calendar, ShoppingBag } from "lucide-react";
 
 export const metadata = {
-  title: "My Orders | Thiranex Store",
+  title: "My Orders | NovaCart",
   description: "View your order history and live delivery tracking.",
 };
 

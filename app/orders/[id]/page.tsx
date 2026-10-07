@@ -18,7 +18,7 @@ interface OrderDetailPageProps {
 }
 
 export const metadata = {
-  title: "Order Details & Tracking | Thiranex Store",
+  title: "Order Details & Tracking | NovaCart",
   description: "Live tracking, delivery status, and order receipt.",
 };
 
@@ -68,7 +68,7 @@ export default async function OrderDetailPage({
               Order Successfully Placed!
             </h2>
             <p className="mt-1 text-xs text-emerald-800 dark:text-emerald-300">
-              Thank you for shopping with Thiranex Store. Your order has been registered in the database, product inventory has been updated, and fulfillment is in progress.
+              Thank you for shopping with NovaCart. Your order has been registered in the database, product inventory has been updated, and fulfillment is in progress.
             </p>
           </div>
         </div>

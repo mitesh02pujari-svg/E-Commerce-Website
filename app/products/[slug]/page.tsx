@@ -26,11 +26,11 @@ export async function generateMetadata({ params }: ProductPageProps) {
   const product = await getProductBySlug(slug);
 
   if (!product) {
-    return { title: "Product Not Found | Thiranex Store" };
+    return { title: "Product Not Found | NovaCart" };
   }
 
   return {
-    title: `${product.name} | Thiranex Store`,
+    title: `${product.name} | NovaCart`,
     description: product.description.slice(0, 160),
   };
 }

@@ -2,8 +2,8 @@ import React from "react";
 import { SignUpForm } from "@/components/auth/SignUpForm";
 
 export const metadata = {
-  title: "Create Account | Thiranex Store",
-  description: "Register a customer account with Thiranex Store.",
+  title: "Create Account | NovaCart",
+  description: "Register a customer account with NovaCart.",
 };
 
 export default function SignUpPage() {

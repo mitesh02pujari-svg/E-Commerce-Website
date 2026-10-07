@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
-  name: "Thiranex Store",
+  name: "NovaCart",
   description: "Full-Stack Next.js E-Commerce Platform built with App Router, TypeScript, Tailwind CSS, and Supabase.",
-  author: "Thiranex Internship Task 3",
+  author: "NovaCart",
   navItems: [
     { label: "Home", href: "/" },
     { label: "Shop", href: "/products" },

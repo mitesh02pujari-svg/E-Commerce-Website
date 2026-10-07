@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Admin Dashboard | Thiranex Store",
+  title: "Admin Dashboard | NovaCart",
   description: "Overview statistics, order fulfillment, and product catalog management.",
 };
 
@@ -32,7 +32,7 @@ export default async function AdminDashboardPage() {
             Operations & Performance Dashboard
           </h1>
           <p className="mt-1 text-xs text-slate-500">
-            Real-time business metrics and database state for Thiranex Store.
+            Real-time business metrics and database state for NovaCart.
           </p>
         </div>
 
