@@ -1,246 +1,543 @@
-# E-Commerce Website
+# 🛍️ NovaCart — Full-Stack E-Commerce Web Application
 
-> **Thiranex Internship Task 3** — Complete, Functional Full-Stack E-Commerce Web Application built with Next.js 16, TypeScript, Tailwind CSS v4, and Supabase PostgreSQL.
+A modern, full-stack e-commerce web application built with **Next.js, TypeScript, Tailwind CSS, and Supabase**. NovaCart provides a complete online shopping experience with product browsing, search, cart management, checkout, order tracking, authentication, and role-based admin management.
 
-Repository: [https://github.com/mitesh02pujari-svg/E-Commerce-Website](https://github.com/mitesh02pujari-svg/E-Commerce-Website)
+🔗 **Live Demo:** https://e-commerce-website-wheat-delta.vercel.app/
+🔗 **GitHub:** https://github.com/mitesh02pujari-svg/E-Commerce-Website
 
 ---
 
 ## 📌 Project Overview
 
-This repository is a production-grade full-stack e-commerce web platform engineered for **Task 3 of the Thiranex Internship**. The platform supports two core roles: **User** and **Admin**, integrated with **Supabase Authentication**, **PostgreSQL**, and **Row Level Security (RLS)**.
+**NovaCart** is a full-stack e-commerce platform developed as part of **Thiranex Internship — Task 3: E-Commerce Web Application**.
 
-All business operations—product discovery, filtering, cart management, checkout, order generation, inventory tracking, and administrative catalog management—are backed by real database transactions without mock data.
+The project focuses on implementing real-world e-commerce functionality including:
 
----
+* Product catalog and categories
+* Product search and filtering
+* Shopping cart management
+* Secure checkout
+* Order creation and tracking
+* User authentication
+* Role-based access control
+* Admin product management
+* Admin category management
+* Admin order management
+* Database integration
+* Responsive UI/UX
 
-## ✨ Features Implemented
-
-### 🛒 Customer Experience (User Role)
-- **Account Registration & Authentication**: Secure sign-up (`/signup`), sign-in (`/login`), and sign-out with session cookies.
-- **Dynamic Product Catalog**: Search by keyword/title, filter by category collections, and sort by price or newest arrivals (`/products`).
-- **Product Details**: High-resolution image showcase, dynamic discount calculations, live stock availability, quantity selector, and related products (`/products/[slug]`).
-- **Category Browsing**: Dedicated category collection views (`/categories/[slug]`).
-- **Persistent Database Shopping Cart**: Items are synced to Supabase `cart_items` for authenticated users with stock-capped quantity adjustment (`/cart`).
-- **Secure Server-Validated Checkout**: Complete delivery address form with server-side recalculated pricing and atomic stock decrements (`/checkout`).
-- **Order History & Live Delivery Tracking**: Detailed order receipt and a visual multi-stage fulfillment tracker (`PENDING` → `CONFIRMED` → `PROCESSING` → `SHIPPED` → `OUT_FOR_DELIVERY` → `DELIVERED`) (`/orders` & `/orders/[id]`).
-- **Account Profile**: Overview of user information, role badges, and order shortcuts (`/profile`).
-
-### 🛡️ Administrative Portal (Admin Role)
-- **Executive Operations Dashboard**: Real-time KPI metrics displaying total revenue, total orders, pending orders, low-stock inventory alerts, and recent customer purchases (`/admin`).
-- **Product Inventory Management**: Complete catalog listing with search, stock counts, SKU identifiers, draft/published visibility toggles, and edit links (`/admin/products`).
-- **Product Creation & Editing**: Comprehensive form with name, slug generation, category assignment, price, compare-at price, SKU, stock count, and active status (`/admin/products/new` & `/admin/products/[id]/edit`).
-- **Category Management**: Create, edit, and safely delete product collections with associated image URLs (`/admin/categories`).
-- **Order Management & Fulfillment**: Filter orders by status, inspect customer details, line items, and transition fulfillment/payment statuses (`/admin/orders` & `/admin/orders/[id]`).
+The application uses **Supabase** for authentication, PostgreSQL database services, and Row Level Security (RLS).
 
 ---
 
-## 🛠️ Technology Stack
+## ✨ Features
 
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Server Actions, Turbopack)
-- **Frontend & UI**: [React 19](https://react.dev/), [Tailwind CSS v4](https://tailwindcss.com/), [Lucide React](https://lucide.dev/)
-- **Language**: [TypeScript 5](https://www.typescriptlang.org/) (Strict typing, no `any`)
-- **Backend & Database**: [Supabase](https://supabase.com/) (PostgreSQL 15+, Supabase Auth, Row Level Security)
-- **Data Access & State**: `@supabase/ssr`, `@supabase/supabase-js`, `clsx`, `tailwind-merge`
+### 🛒 Customer Features
+
+* 🔐 User registration and login
+* 🏠 Modern e-commerce homepage
+* 📦 Browse product catalog
+* 🔎 Product search
+* 🗂️ Category-based browsing
+* 📄 Product detail pages
+* 🛍️ Add products to cart
+* ➕ Increase/decrease cart quantity
+* 🗑️ Remove products from cart
+* 💳 Checkout
+* 📋 Order history
+* 🚚 Order tracking
+* 👤 User profile
+* 📱 Responsive design
 
 ---
 
-## 🗂️ Project Architecture & Folder Structure
+### 👨‍💼 Admin Features
+
+Administrators have access to a dedicated dashboard.
+
+#### Dashboard
+
+* Overview of store activity
+* Product statistics
+* Order statistics
+* Store management
+
+#### Product Management
+
+* View products
+* Add new products
+* Edit products
+* Manage stock
+* Activate/deactivate products
+* Manage product information
+
+#### Category Management
+
+* View categories
+* Add categories
+* Edit category information
+* Manage category data
+
+#### Order Management
+
+* View customer orders
+* View individual order details
+* Track order status
+* Update order status
+
+---
+
+## 🔐 Authentication & Authorization
+
+NovaCart implements authentication using **Supabase Auth**.
+
+The application supports two roles:
+
+| Role        | Access                                    |
+| ----------- | ----------------------------------------- |
+| 👤 User     | Shopping, cart, checkout, orders, profile |
+| 👨‍💼 Admin | User features + complete store management |
+
+Role-based access control prevents normal users from accessing administrative functionality.
+
+---
+
+## 🗄️ Database
+
+NovaCart uses **Supabase PostgreSQL** as its database.
+
+### Main Tables
+
+```text
+profiles
+categories
+products
+cart_items
+orders
+order_items
+```
+
+### Database Relationships
+
+```text
+profiles
+   │
+   └── orders
+          │
+          └── order_items
+                 │
+                 └── products
+                        │
+                        └── categories
+
+profiles
+   │
+   └── cart_items
+          │
+          └── products
+```
+
+The project also uses **Row Level Security (RLS)** to protect database operations.
+
+---
+
+## 🛡️ Security
+
+The application includes:
+
+* Supabase Authentication
+* Role-based authorization
+* PostgreSQL Row Level Security
+* Protected admin routes
+* Server-side checkout verification
+* Stock validation
+* Secure order creation
+* Environment variables for sensitive configuration
+
+Sensitive environment variables are stored locally and are **not committed to GitHub**.
+
+---
+
+## 🧰 Tech Stack
+
+### Frontend
+
+* **Next.js 16**
+* **React 19**
+* **TypeScript**
+* **Tailwind CSS**
+* **Lucide React**
+
+### Backend
+
+* **Next.js App Router**
+* **Server-side APIs**
+* **Supabase**
+
+### Database
+
+* **PostgreSQL**
+* **Supabase**
+
+### Authentication
+
+* **Supabase Auth**
+
+### Deployment
+
+* **Vercel**
+
+### Development Tools
+
+* **Git**
+* **GitHub**
+* **VS Code / Antigravity**
+* **ESLint**
+* **TypeScript**
+
+---
+
+## 📁 Project Structure
 
 ```text
 E-Commerce/
-├── app/                              # Next.js App Router routes & layouts
-│   ├── (public)/                     # Public & customer store
-│   │   ├── page.tsx                  # E-commerce landing page with hero, categories & catalog
-│   │   ├── layout.tsx                # Root layout with responsive Navbar and Footer
-│   │   ├── globals.css               # Tailwind CSS v4 theme variables
-│   │   ├── loading.tsx               # Root loading fallback
+│
+├── app/
+│   ├── admin/
+│   │   ├── page.tsx
 │   │   ├── products/
-│   │   │   ├── page.tsx              # Searchable, filterable catalog
-│   │   │   ├── loading.tsx           # Product catalog skeleton
-│   │   │   └── [slug]/
-│   │   │       ├── page.tsx          # Dynamic product detail page
-│   │   │       └── loading.tsx
 │   │   ├── categories/
-│   │   │   └── [slug]/page.tsx       # Category-specific catalog
-│   │   ├── cart/
-│   │   │   ├── page.tsx              # Persistent database cart page
-│   │   │   └── loading.tsx
-│   │   ├── checkout/
-│   │   │   └── page.tsx              # Shipping form and server-validated checkout
-│   │   ├── orders/
-│   │   │   ├── page.tsx              # Order history list
-│   │   │   ├── loading.tsx
-│   │   │   └── [id]/page.tsx         # Receipt and visual order progress tracker
-│   │   ├── login/page.tsx            # Sign in
-│   │   ├── signup/page.tsx           # Customer registration
-│   │   └── profile/page.tsx          # User profile view
-│   └── admin/                        # Protected Administrative Portal
-│       ├── layout.tsx                # Admin authorization check and console navigation
-│       ├── page.tsx                  # Admin analytics and metrics dashboard
-│       ├── loading.tsx
-│       ├── products/
-│       │   ├── page.tsx              # Inventory and product management table
-│       │   ├── new/page.tsx          # Create new catalog product
-│       │   └── [id]/edit/page.tsx    # Edit existing product
-│       ├── categories/
-│       │   └── page.tsx              # Category creation and organization
-│       └── orders/
-│           ├── page.tsx              # Filterable admin order management
-│           └── [id]/page.tsx         # Order fulfillment and status updater
-├── components/                       # Modular UI components
-│   ├── admin/                        # Admin-specific tables and forms
-│   │   ├── CategoryManager.tsx
-│   │   ├── OrderStatusUpdater.tsx
-│   │   ├── ProductForm.tsx
-│   │   └── ProductTable.tsx
-│   ├── auth/                         # Authentication forms
-│   │   ├── LoginForm.tsx
-│   │   └── SignUpForm.tsx
-│   ├── ecommerce/                    # Reusable customer components
-│   │   ├── AddToCartButton.tsx
-│   │   ├── CartView.tsx
-│   │   ├── CheckoutForm.tsx
-│   │   ├── OrderStatusBadge.tsx
-│   │   ├── OrderTracker.tsx
-│   │   ├── ProductCard.tsx
-│   │   ├── ProductDetailAction.tsx
-│   │   ├── ProductFilters.tsx
-│   │   └── ProductGrid.tsx
-│   ├── layout/                       # App layout elements
-│   │   ├── Navbar.tsx                # Responsive header with cart count and user profile
-│   │   └── Footer.tsx                # Comprehensive e-commerce footer
-│   └── ui/                           # Primitive UI components
-│       ├── Badge.tsx
-│       ├── Button.tsx
-│       └── Card.tsx
-├── lib/                              # Centralized business logic & integrations
-│   ├── actions/                      # Server Actions for mutations
-│   │   ├── admin.ts                  # Admin product, category, and order status mutations
-│   │   ├── auth.ts                   # Sign in, sign up, and sign out actions
-│   │   ├── cart.ts                   # Cart addition, updates, and removals
-│   │   └── checkout.ts               # Atomic order placement and stock decrement
-│   ├── db/                           # Reusable Supabase database queries
-│   │   ├── admin.ts                  # Operations metrics and order lists
-│   │   ├── auth.ts                   # Session and profile helpers
-│   │   ├── cart.ts                   # Cart queries and stock checks
-│   │   ├── categories.ts             # Category fetch and admin mutations
-│   │   ├── orders.ts                 # Order creation and retrieval
-│   │   └── products.ts               # Filtered product queries
-│   ├── supabase/                     # Supabase client factories
-│   │   ├── client.ts                 # Typed browser client factory (@supabase/ssr)
-│   │   └── server.ts                 # Typed server client factory with cookie handling
-│   ├── constants.ts                  # Application constants and navigation links
-│   ├── supabase.ts                   # Client re-export
-│   └── utils.ts                      # Class merging (`cn`) and currency formatter
-├── supabase/                         # Database schema & migrations
+│   │   └── orders/
+│   │
+│   ├── products/
+│   ├── categories/
+│   ├── cart/
+│   ├── checkout/
+│   ├── orders/
+│   ├── login/
+│   ├── signup/
+│   ├── profile/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+│
+├── components/
+│   ├── admin/
+│   ├── auth/
+│   ├── ecommerce/
+│   ├── layout/
+│   └── ui/
+│
+├── lib/
+│   ├── supabase/
+│   ├── constants.ts
+│   └── utils.ts
+│
+├── supabase/
 │   ├── migrations/
-│   │   └── 20261007000000_init_schema.sql  # Complete PostgreSQL schema with RLS
-│   ├── seed.sql                      # 6 categories & 18 realistic items
-│   └── README.md                     # Setup instructions & admin promotion guide
-├── types/                            # Strict TypeScript definitions
-│   ├── database.ts                   # Supabase Database schema typings
-│   └── index.ts                      # Domain entities (Product, Category, Order, Cart)
-├── .env.example                      # Template environment variables
-├── .env.local                        # Local secrets (strictly ignored by Git)
-├── .gitignore                        # Git configuration
-├── next.config.ts                    # Next.js configuration with remote image patterns
-├── package.json                      # Dependencies and scripts
-└── tsconfig.json                     # TypeScript compiler configuration
+│   ├── seed.sql
+│   └── README.md
+│
+├── types/
+│   ├── database.ts
+│   └── index.ts
+│
+├── public/
+│
+├── .env.example
+├── .gitignore
+├── next.config.ts
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
-
----
-
-## 🗄️ Database Schema & Entities
-
-The PostgreSQL schema is defined in [`supabase/migrations/20261007000000_init_schema.sql`](./supabase/migrations/20261007000000_init_schema.sql):
-
-1. **`profiles`**: `id` (references `auth.users`), `email`, `full_name`, `role` (`user` / `admin`), `avatar_url`, `created_at`, `updated_at`.
-2. **`categories`**: `id`, `name`, `slug`, `description`, `image_url`, `created_at`.
-3. **`products`**: `id`, `category_id`, `name`, `slug`, `description`, `price`, `compare_at_price`, `image_url`, `stock`, `sku`, `is_active`, `created_at`, `updated_at`.
-4. **`cart_items`**: `id`, `user_id`, `product_id`, `quantity`, `created_at`, `updated_at`.
-5. **`orders`**: `id`, `user_id`, `total_amount`, `status`, `shipping_name`, `shipping_email`, `shipping_phone`, `shipping_address`, `shipping_city`, `shipping_state`, `shipping_postal_code`, `payment_method`, `payment_status`, `created_at`, `updated_at`.
-6. **`order_items`**: `id`, `order_id`, `product_id`, `product_name`, `product_price`, `quantity`, `subtotal`, `created_at`.
-
-### Supported Order Statuses
-- `PENDING` &bull; `CONFIRMED` &bull; `PROCESSING` &bull; `SHIPPED` &bull; `OUT_FOR_DELIVERY` &bull; `DELIVERED` &bull; `CANCELLED`
-
-### Payment Statuses
-- `PENDING` &bull; `PAID` &bull; `FAILED`
-
----
-
-## 🔒 Security & Row Level Security (RLS)
-
-- **Database-Backed Authorization**: Authorization is never based on editable user metadata. The `public.is_admin(user_id)` Security Definer function evaluates the `profiles` table directly.
-- **Cart Privacy**: Only the owning user (`auth.uid() = user_id`) can view, add, or delete their cart items.
-- **Order Isolation**: Customers can only inspect their own orders. Administrators can view and update all orders.
-- **Catalog Protection**: Only administrators can insert, update, or delete products and categories.
-- **Zero Secret Exposure**: Only `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` are used in frontend environment files. Service-role keys are never used in client or public repositories.
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone & Install
+### 1. Clone the repository
+
 ```bash
 git clone https://github.com/mitesh02pujari-svg/E-Commerce-Website.git
+```
+
+### 2. Navigate to the project
+
+```bash
 cd E-Commerce-Website
+```
+
+### 3. Install dependencies
+
+```bash
 npm install
 ```
 
-### 2. Configure Environment Variables
-Copy `.env.example` to `.env.local`:
+### 4. Configure environment variables
 
-```bash
-cp .env.example .env.local
-```
+Create a `.env.local` file:
 
-Add your Supabase project credentials in `.env.local`:
 ```env
-NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_publishable_or_anon_key
 ```
 
-### 3. Apply Supabase Migrations & Seed Data
-1. Go to your [Supabase Dashboard](https://supabase.com/dashboard) -> **SQL Editor**.
-2. Run the SQL script in [`supabase/migrations/20261007000000_init_schema.sql`](./supabase/migrations/20261007000000_init_schema.sql).
-3. Run the SQL script in [`supabase/seed.sql`](./supabase/seed.sql) to load the 6 categories and 18 products.
+> Never commit `.env.local` or expose Supabase secret/service-role keys.
 
-### 4. Create & Promote an Admin User
-1. Register a new user at `http://localhost:3000/signup` (e.g. `admin@thiranex.com`).
-2. In the Supabase **SQL Editor**, run:
-   ```sql
-   UPDATE public.profiles
-   SET role = 'admin'
-   WHERE email = 'admin@thiranex.com';
-   ```
-3. Sign in to access the **Admin Console** at `/admin`.
+### 5. Configure Supabase
 
-### 5. Run Development Server
+Create a Supabase project and execute the database migration located at:
+
+```text
+supabase/migrations/20261007000000_init_schema.sql
+```
+
+Then populate the database using:
+
+```text
+supabase/seed.sql
+```
+
+The seed data contains:
+
+* 6 product categories
+* 18 products
+
+### 6. Start the development server
+
 ```bash
 npm run dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) in your browser.
+Open:
+
+```text
+http://localhost:3000
+```
 
 ---
 
-## 🧪 Verification & Build
+## 👤 Creating an Admin User
+
+Create a normal account through the application's signup page.
+
+Then update the user's role in Supabase:
+
+```sql
+UPDATE public.profiles
+SET role = 'admin'
+WHERE email = 'YOUR_EMAIL';
+```
+
+After changing the role:
+
+```text
+Logout → Login again → /admin
+```
+
+The user will then have access to the admin dashboard.
+
+---
+
+## 🧪 Testing
+
+The project was tested using:
+
+### TypeScript
 
 ```bash
-# Run linting
-npm run lint
+npx tsc --noEmit
+```
 
-# Run production build
+Result:
+
+```text
+0 errors
+```
+
+### ESLint
+
+```bash
+npm run lint
+```
+
+Result:
+
+```text
+0 errors
+0 warnings
+```
+
+### Production Build
+
+```bash
 npm run build
 ```
+
+Result:
+
+```text
+Build successful
+```
+
+---
+
+## 🌐 Deployment
+
+NovaCart is deployed using **Vercel**.
+
+### Production URL
+
+**https://e-commerce-website-wheat-delta.vercel.app/**
+
+### Admin Dashboard
+
+**https://e-commerce-website-wheat-delta.vercel.app/admin**
+
+The production deployment uses the same Supabase backend and database as the local development environment.
+
+---
+
+## 🔄 Application Flow
+
+### Customer Shopping Flow
+
+```text
+Visit NovaCart
+      ↓
+Browse Products
+      ↓
+Search / Filter
+      ↓
+View Product
+      ↓
+Add to Cart
+      ↓
+Review Cart
+      ↓
+Checkout
+      ↓
+Order Created
+      ↓
+Order Tracking
+```
+
+### Admin Flow
+
+```text
+Admin Login
+     ↓
+Admin Dashboard
+     ↓
+Manage Products
+     ↓
+Manage Categories
+     ↓
+Manage Orders
+     ↓
+Update Order Status
+```
+
+---
+
+## 📊 Core Modules
+
+| Module         | Description                         |
+| -------------- | ----------------------------------- |
+| Authentication | User registration and login         |
+| Authorization  | User/Admin role management          |
+| Products       | Product catalog and details         |
+| Categories     | Product categorization              |
+| Search         | Product and order search            |
+| Cart           | Shopping cart management            |
+| Checkout       | Order creation and stock validation |
+| Orders         | Order history and tracking          |
+| Admin          | Store management dashboard          |
+| Database       | PostgreSQL via Supabase             |
+| Security       | Authentication + RLS                |
+| Deployment     | Vercel production deployment        |
+
+---
+
+## 🎯 Internship Task
+
+**Internship:** Thiranex Internship
+**Task:** Task 3 — E-Commerce Web Application
+
+### Objective
+
+Build a full-stack e-commerce application with:
+
+* Product catalog
+* Shopping cart
+* Checkout
+* Authentication
+* Role-based access
+* Backend APIs
+* Database integration
+* Product management
+* Order tracking
+
+NovaCart implements these requirements using a modern full-stack architecture.
+
+---
+
+## 📚 What I Learned
+
+Through this project, I gained practical experience with:
+
+* Building full-stack applications using Next.js
+* Next.js App Router
+* TypeScript in a real-world project
+* PostgreSQL database design
+* Supabase authentication
+* Row Level Security
+* Role-based authorization
+* CRUD operations
+* Shopping cart architecture
+* Order management systems
+* Stock management
+* Server-side validation
+* Responsive UI development
+* Git and GitHub workflows
+* Production deployment with Vercel
 
 ---
 
 ## 🔮 Future Improvements
 
-- Automated invoice generation (PDF download).
-- Live real-time order status updates via Supabase Realtime channels.
-- Integration with third-party payment gateways (Stripe, Razorpay) when moving to commercial production.
-- Product customer reviews and star rating submissions.
+Possible future enhancements include:
+
+* 💳 Real payment gateway integration
+* ❤️ Wishlist functionality
+* ⭐ Product reviews and ratings
+* 📧 Order confirmation emails
+* 🎟️ Coupons and discount codes
+* 📊 Advanced sales analytics
+* 📦 Improved inventory management
+* 🔔 Real-time order notifications
+* 🤖 AI-powered product recommendations
+
+---
+
+## 👨‍💻 Developer
+
+**Mitesh Pujari**
+
+Electronics & Computer Engineering Student
+
+### Connect
+
+* GitHub: https://github.com/mitesh02pujari-svg
+* LinkedIn: https://www.linkedin.com/
+
+---
+
+## 📄 License
+
+This project was created for educational and internship purposes.
+
+---
+
+⭐ If you find this project useful, consider giving the repository a star!
